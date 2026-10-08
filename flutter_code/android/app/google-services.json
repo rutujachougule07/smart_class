@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "315485791146",
+    "project_id": "smartclass-3e828",
+    "storage_bucket": "smartclass-3e828.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315485791146:android:68257ef1f1ff327d4c01d3",
+        "android_client_info": {
+          "package_name": "com.example.studentattendance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1EP6tc9Z7BSmdCFDNvwG1hxK-W1GNIoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315485791146:android:68257ef1f1ff327d4c01d3",
+        "android_client_info": {
+          "package_name": "com.example.smartclass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1EP6tc9Z7BSmdCFDNvwG1hxK-W1GNIoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

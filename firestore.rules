@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (request.auth.token.role == 'admin' || request.auth.token.admin == true);
+    }
+
+    // 1. Classes Collection
+    match /classes/{classId} {
+      allow read, write: if true;
+    }
+
+    // 2. Teachers Collection
+    match /teachers/{teacherId} {
+      allow read, write: if true;
+    }
+
+    // 3. Students Collection
+    match /students/{studentId} {
+      allow read, write: if true;
+    }
+
+    // 4. Attendance Collection
+    match /attendance/{attId} {
+      allow read, write: if true;
+    }
+
+    // 5. Exams Collection
+    match /exams/{examId} {
+      allow read, write: if true;
+    }
+
+    // 6. School Profile
+    match /schoolProfile/{profileId} {
+      allow read, write: if true;
+    }
+
+    // 7. Notices & Announcements Collection
+    match /notices/{noticeId} {
+      // Admin / Staff can create and delete notices
+      allow create, delete: if true;
+
+      // Allow updating read status, unread count, readBy array
+      allow update: if true;
+
+      // Read rules for notices:
+      // - General broadcast notices targeted to "All" or "Parents" can be read by anyone/parents
+      // - Direct individual notices targeted to "Selected Parent" can be read if resource matches parentPhone or parentId
+      allow read: if resource.data.targetRole == 'All' ||
+                     resource.data.targetRole == 'Parents' ||
+                     resource.data.targetRole == 'Selected Parent';
+    }
+
+    // 8. Marks Collection
+    match /marks/{markId} {
+      allow read, write: if true;
+    }
+
+    // 9. Exam Results Collection (Used by Android app and Web Admin)
+    match /exam_results/{resultId} {
+      allow read, write: if true;
+    }
+
+    // Default fallback
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
